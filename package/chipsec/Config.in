@@ -1,0 +1,37 @@
+config BR2_PACKAGE_CHIPSEC
+	bool "chipsec"
+	depends on !BR2_PACKAGE_PYTHON # python3
+	depends on BR2_USE_WCHAR # python3
+	depends on BR2_TOOLCHAIN_HAS_THREADS # python3
+	depends on BR2_USE_MMU # python3
+	depends on !BR2_STATIC_LIBS # python3
+	depends on BR2_i386 || BR2_x86_64 # supported only on x86/x86_64
+	depends on BR2_LINUX_KERNEL
+	select BR2_PACKAGE_PYTHON3
+
+	help
+	  CHIPSEC is a framework for analyzing the security of PC
+	  platforms including hardware, system firmware (BIOS/UEFI),
+	  and platform components. 
+
+	  https://github.com/chipsec/chipsec
+
+comment "chipsec needs a toolchain w/ wchar, threads, dynamic library"
+	depends on BR2_USE_MMU
+	depends on BR2_i386 || BR2_x86_64
+	depends on !BR2_USE_WCHAR || !BR2_TOOLCHAIN_HAS_THREADS || BR2_STATIC_LIBS
+
+comment "chipsec needs a Linux kernel to be built"
+	depends on BR2_USE_MMU
+	depends on BR2_i386 || BR2_x86_64
+	depends on !BR2_LINUX_KERNEL
+
+comment "chipsec is not compatible with python"
+	depends on BR2_USE_MMU
+	depends on BR2_i386 || BR2_x86_64
+	depends on BR2_PACKAGE_PYTHON
+
+comment "chipsec depends on python3"
+	depends on BR2_USE_MMU
+	depends on BR2_i386 || BR2_x86_64
+	depends on !BR2_PACKAGE_PYTHON3

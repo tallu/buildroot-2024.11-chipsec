@@ -2731,6 +2731,7 @@ endmenu
 menu "Security"
 	source "package/apparmor/Config.in"
 	source "package/checkpolicy/Config.in"
+	source "package/chipsec/Config.in"
 	source "package/ima-evm-utils/Config.in"
 	source "package/optee-client/Config.in"
 	source "package/optee-examples/Config.in"

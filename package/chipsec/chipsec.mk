@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-CHIPSEC_VERSION = 1.13.11
+CHIPSEC_VERSION = 1.13.13
 CHIPSEC_SITE = $(call github,chipsec,chipsec,$(CHIPSEC_VERSION))
 CHIPSEC_SETUP_TYPE = setuptools
 CHIPSEC_LICENSE = GPL-2.0
